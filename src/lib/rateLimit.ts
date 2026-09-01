@@ -1,6 +1,6 @@
 const hits = new Map<string, { count: number; first: number }>();
-const WINDOW_MS = 60_000;
-const MAX_HITS = 20;
+const WINDOW_MS = 60_000;   // 1-minute sliding window
+const MAX_HITS = 20;        // max 20 requests per IP per window
 
 export function rateLimitCheck(key: string): boolean {
   const now = Date.now();

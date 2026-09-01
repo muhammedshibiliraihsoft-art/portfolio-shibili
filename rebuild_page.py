@@ -1,0 +1,359 @@
+code = '''"use client";
+import React, { useState, useEffect } from 'react';
+import ContactPageClient from '@/components/contact/ContactPageClient';
+import HeroSnakeBackground from '@/components/hero/HeroSnakeBackground';
+
+export default function PortfolioTemplate() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+      const sections = ['contact', 'about', 'projects', 'experience'];
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 120 && rect.bottom >= 120) {
+            setActiveSection(id);
+            return;
+          }
+        }
+      }
+      setActiveSection('');
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLink = (id: string, label: string) => {
+    const isActive = activeSection === id;
+    return (
+      <a
+        key={id}
+        className={	ext-lg font-poppins font-medium transition-all duration-300 relative }
+        href={#\}
+        onClick={() => setIsMenuOpen(false)}
+      >
+        {label}
+      </a>
+    );
+  };
+
+  return (
+    <div className="antialiased selection:bg-primary selection:text-white flex flex-col min-h-screen bg-background">
+      {/* TopNavBar */}
+      <nav className={g-background text-primary font-body-md text-body-md fixed top-0 w-full z-50 transition-all duration-300 }>
+        <div className={lex justify-between items-center max-w-max-width mx-auto px-6 md:px-12 w-full transition-all duration-300 }>
+          <div className="flex items-center gap-4">
+            <img alt="Developer Profile Avatar" className="w-10 h-10 rounded-full border border-outline-variant object-cover" src="/profile.png" />
+          </div>
+          <div className="flex md:hidden items-center">
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white hover:text-primary transition-colors">
+              <span className="material-symbols-outlined text-3xl">{isMenuOpen ? 'close' : 'menu'}</span>
+            </button>
+          </div>
+          <div className="hidden md:flex items-center gap-8">
+            {navLink('experience', 'Experience')}
+            {navLink('projects', 'Projects')}
+            {navLink('about', 'About')}
+          </div>
+          <div className="hidden md:flex items-center">
+            <a className="bg-primary text-white text-sm font-poppins font-bold px-5 py-2.5 rounded-full hover:brightness-110 transition-all duration-300" href="#contact">Get in Touch</a>
+          </div>
+        </div>
+      </nav>
+
+      {isMenuOpen && (
+        <div className="fixed inset-0 top-20 bg-background/98 z-40 md:hidden flex flex-col items-center justify-center gap-8 backdrop-blur-md">
+          {['experience', 'projects', 'about'].map((id) => (
+            <a
+              key={id}
+              href={#\}
+              onClick={() => setIsMenuOpen(false)}
+              className="text-2xl font-poppins font-medium text-white capitalize hover:text-primary"
+            >
+              {id}
+            </a>
+          ))}
+          <a
+            href="#contact"
+            onClick={() => setIsMenuOpen(false)}
+            className="mt-4 bg-primary text-white text-lg font-poppins font-bold px-10 py-4 rounded-full hover:brightness-110"
+          >
+            Get in Touch
+          </a>
+        </div>
+      )}
+
+      <main className="flex-grow desktop-zoom">
+        {/* Hero Section */}
+        <div className="relative w-full overflow-hidden pt-32 md:pt-64 min-h-screen">
+          <HeroSnakeBackground />
+          <section className="max-w-[1100px] relative z-10 mx-auto px-4 md:px-6 pb-section-gap pt-0 md:pt-4 flex flex-col items-start w-full justify-center min-h-[calc(100vh-200px)]">
+            <div className="w-full flex flex-col md:flex-row items-center gap-8 md:gap-0" style={{position: 'relative'}}>
+              {/* Left: text content */}
+              <div className="flex-1 text-center md:text-left md:pr-8 z-10 w-full">
+                <h1 className="text-4xl sm:text-5xl md:text-[6rem] font-bold text-white mb-4 md:mb-6 tracking-tight leading-tight md:leading-none font-serif">Muhammed Shibili N</h1>
+                <h2 className="text-2xl sm:text-3xl md:text-[3.2rem] font-bold text-primary mb-6 md:mb-8 leading-tight font-serif md:-mt-6">AI Architect &amp; Full Stack Developer</h2>
+                <p className="mb-10 md:mb-16 text-base sm:text-lg md:text-xl font-poppins font-medium text-neutral opacity-80 max-w-xl leading-relaxed mx-auto md:mx-0">
+                  Developer based in San Francisco, USA. I specialize in UI design, web and mobile application development and maintenance.
+                </p>
+                <div className="flex justify-center md:justify-start w-full">
+                  <a className="inline-block bg-[#2563eb] text-[#fff] px-8 md:px-10 py-4 md:py-5 text-base md:text-lg rounded-full font-bold hover:scale-105 hover:brightness-110 transition-all duration-300" href="#contact">Get in Touch</a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        {/* Experience Section */}
+        <section className="max-w-[1100px] mx-auto px-4 md:px-6 py-section-gap w-full text-left" id="experience">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-8 md:mb-12 text-center md:text-left">Work Experience</h2>
+          <div className="flex flex-col gap-12 text-left w-full">
+            {/* Experience 1 */}
+            <div className="flex flex-col md:flex-row gap-4 md:gap-12 group">
+              <div className="md:w-1/4 shrink-0">
+                <p className="text-primary font-bold text-lg font-poppins tracking-wider uppercase mb-2">2025 &mdash; Present</p>
+                <p className="text-neutral text-sm uppercase tracking-widest font-bold opacity-50">Independent</p>
+              </div>
+              <div className="md:w-3/4">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-1 group-hover:text-primary transition-colors duration-300">Full Stack Developer</h3>
+                <h4 className="text-lg md:text-xl font-medium text-neutral mb-6">Independent Developer</h4>
+                <ul className="space-y-4">
+                  <li className="flex gap-4 items-start">
+                    <span className="material-symbols-outlined text-primary text-[20px] mt-1 shrink-0">check_circle</span>
+                    <p className="text-base md:text-xl text-neutral font-poppins font-medium opacity-80 leading-relaxed">Building responsive web applications and business systems with a focus on clean UI, practical workflows, scalability, and maintainable code.</p>
+                  </li>
+                  <li className="flex gap-4 items-start">
+                    <span className="material-symbols-outlined text-primary text-[20px] mt-1 shrink-0">check_circle</span>
+                    <p className="text-base md:text-xl text-neutral font-poppins font-medium opacity-80 leading-relaxed">Developing real-world projects using modern frontend and backend technologies, database-driven architecture, authentication, APIs, and cloud-based services.</p>
+                  </li>
+                  <li className="flex gap-4 items-start">
+                    <span className="material-symbols-outlined text-primary text-[20px] mt-1 shrink-0">check_circle</span>
+                    <p className="text-base md:text-xl text-neutral font-poppins font-medium opacity-80 leading-relaxed">Designing applications around actual business requirements, converting workflows into structured digital products rather than building only static interfaces.</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Experience 2 */}
+            <div className="flex flex-col md:flex-row gap-4 md:gap-12 group">
+              <div className="md:w-1/4 shrink-0">
+                <p className="text-primary font-bold text-lg font-poppins tracking-wider uppercase mb-2">2026 &mdash; Present</p>
+                <p className="text-neutral text-sm uppercase tracking-widest font-bold opacity-50">Independent</p>
+              </div>
+              <div className="md:w-3/4">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-1 group-hover:text-primary transition-colors duration-300">AI &amp; Software Developer</h3>
+                <h4 className="text-lg md:text-xl font-medium text-neutral mb-6">Independent Projects</h4>
+                <ul className="space-y-4">
+                  <li className="flex gap-4 items-start">
+                    <span className="material-symbols-outlined text-primary text-[20px] mt-1 shrink-0">check_circle</span>
+                    <p className="text-base md:text-xl text-neutral font-poppins font-medium opacity-80 leading-relaxed">Exploring AI-assisted software development and building intelligent application workflows with a focus on automation, tool integration, and practical AI-powered features.</p>
+                  </li>
+                  <li className="flex gap-4 items-start">
+                    <span className="material-symbols-outlined text-primary text-[20px] mt-1 shrink-0">check_circle</span>
+                    <p className="text-base md:text-xl text-neutral font-poppins font-medium opacity-80 leading-relaxed">Developing a strong foundation in Python, APIs, data structures, backend logic, and modern AI development concepts to build reliable software systems.</p>
+                  </li>
+                  <li className="flex gap-4 items-start">
+                    <span className="material-symbols-outlined text-primary text-[20px] mt-1 shrink-0">check_circle</span>
+                    <p className="text-base md:text-xl text-neutral font-poppins font-medium opacity-80 leading-relaxed">Experimenting with agentic application architecture, where AI can reason through tasks and interact with tools seamlessly.</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Experience 3 */}
+            <div className="flex flex-col md:flex-row gap-4 md:gap-12 group">
+              <div className="md:w-1/4 shrink-0">
+                <p className="text-primary font-bold text-lg font-poppins tracking-wider uppercase mb-2">2024 &mdash; 2025</p>
+                <p className="text-neutral text-sm uppercase tracking-widest font-bold opacity-50">Tech Corp</p>
+              </div>
+              <div className="md:w-3/4">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-1 group-hover:text-primary transition-colors duration-300">Web &amp; Application Developer</h3>
+                <h4 className="text-lg md:text-xl font-medium text-neutral mb-6">Frontend Engineering</h4>
+                <ul className="space-y-4">
+                  <li className="flex gap-4 items-start">
+                    <span className="material-symbols-outlined text-primary text-[20px] mt-1 shrink-0">check_circle</span>
+                    <p className="text-base md:text-xl text-neutral font-poppins font-medium opacity-80 leading-relaxed">Designed and developed scalable React architectures focusing on performance, reusability, and clean code.</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Projects Section */}
+        <section className="max-w-[1100px] mx-auto px-4 md:px-6 py-section-gap w-full text-left" id="projects">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-8 md:mb-24 text-center md:text-left">Featured Projects</h2>
+          <div className="flex flex-col gap-8 md:gap-0 w-full relative">
+            
+            {/* Project 1 */}
+            <div className="relative md:sticky md:top-[15vh] h-auto md:h-[70vh] flex items-center justify-center w-full" style={{ zIndex: 10 }}>
+              <div className="w-full h-full md:h-[65vh] bg-[#0e141b] rounded-2xl border border-[#94a3b833] flex flex-col md:flex-row overflow-hidden shadow-2xl relative transform transition-transform duration-500 hover:scale-[1.02]">
+                <div className="absolute inset-0 z-0 pointer-events-none opacity-20" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%221.5%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}></div>
+                <div className="flex-1 p-8 md:p-16 flex flex-col justify-center z-10 relative">
+                  <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6">AccoutSoft</h3>
+                  <p className="text-base md:text-xl text-neutral opacity-80 mb-8 md:mb-10 font-poppins max-w-lg leading-relaxed">A comprehensive financial tracking application enabling businesses to monitor real-time accounting data, streamline billing, and visualize metrics through dynamic dashboards.</p>
+                  <div className="flex gap-4 md:gap-6 mt-auto flex-wrap">
+                    <a className="text-white hover:text-primary font-bold text-base md:text-lg flex items-center gap-2 transition-colors group" href="/">
+                      Live Preview <span className="material-symbols-outlined text-[20px] group-hover:translate-x-[3px] transition-transform">arrow_forward</span>
+                    </a>
+                    <a className="text-neutral hover:text-white font-bold text-base md:text-lg flex items-center gap-2 transition-colors group" href="/">
+                      Source Code <span className="material-symbols-outlined text-[20px] group-hover:translate-x-[3px] transition-transform">arrow_forward</span>
+                    </a>
+                  </div>
+                </div>
+                <div className="flex-1 relative h-64 md:h-auto overflow-hidden bg-[#0a0e14]">
+                  <img alt="AccoutSoft" className="absolute top-0 left-0 w-full h-full object-cover object-right-top transition-transform duration-1000 hover:scale-105" src="/AccoutSoft-light.png" />
+                </div>
+              </div>
+            </div>
+
+            {/* Project 2 */}
+            <div className="relative md:sticky md:top-[15vh] h-auto md:h-[70vh] flex items-center justify-center w-full" style={{ zIndex: 11 }}>
+              <div className="w-full h-full md:h-[65vh] bg-[#060c18] rounded-2xl border border-[#94a3b833] flex flex-col md:flex-row overflow-hidden shadow-2xl relative transform transition-transform duration-500 hover:scale-[1.02]">
+                <div className="absolute inset-0 z-0 pointer-events-none opacity-20" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%221.5%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}></div>
+                <div className="flex-1 p-8 md:p-16 flex flex-col justify-center z-10 relative">
+                  <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6">Contribution Portal</h3>
+                  <p className="text-base md:text-xl text-neutral opacity-80 mb-8 md:mb-10 font-poppins max-w-lg leading-relaxed">A secure and transparent platform for managing charity donations and member contributions. Features robust reporting tools and automated receipt generation.</p>
+                  <div className="flex gap-4 md:gap-6 mt-auto flex-wrap">
+                    <a className="text-white hover:text-primary font-bold text-base md:text-lg flex items-center gap-2 transition-colors group" href="/">
+                      Live Preview <span className="material-symbols-outlined text-[20px] group-hover:translate-x-[3px] transition-transform">arrow_forward</span>
+                    </a>
+                    <a className="text-neutral hover:text-white font-bold text-base md:text-lg flex items-center gap-2 transition-colors group" href="/">
+                      Source Code <span className="material-symbols-outlined text-[20px] group-hover:translate-x-[3px] transition-transform">arrow_forward</span>
+                    </a>
+                  </div>
+                </div>
+                <div className="flex-1 relative h-64 md:h-auto overflow-hidden bg-[#040811]">
+                  <img alt="Contribution Portal" className="absolute top-0 left-0 w-full h-full object-contain object-bottom drop-shadow-2xl transition-transform duration-1000 hover:scale-105" src="/charity.png" />
+                </div>
+              </div>
+            </div>
+
+            {/* Project 3 */}
+            <div className="relative md:sticky md:top-[15vh] h-auto md:h-[70vh] flex items-center justify-center w-full" style={{ zIndex: 12 }}>
+              <div className="w-full h-full md:h-[65vh] bg-[#131b26] rounded-2xl border border-[#94a3b833] flex flex-col md:flex-row overflow-hidden shadow-2xl relative transform transition-transform duration-500 hover:scale-[1.02]">
+                <div className="absolute inset-0 z-0 pointer-events-none opacity-20" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%221.5%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}></div>
+                <div className="flex-1 p-8 md:p-16 flex flex-col justify-center z-10 relative">
+                  <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6">Festival Manager</h3>
+                  <p className="text-base md:text-xl text-neutral opacity-80 mb-8 md:mb-10 font-poppins max-w-lg leading-relaxed">An end-to-end event management suite tailored for large-scale festivals, handling ticketing workflows, artist schedules, and real-time venue coordination seamlessly.</p>
+                  <div className="flex gap-4 md:gap-6 mt-auto flex-wrap">
+                    <a className="text-white hover:text-primary font-bold text-base md:text-lg flex items-center gap-2 transition-colors group" href="/">
+                      Live Preview <span className="material-symbols-outlined text-[20px] group-hover:translate-x-[3px] transition-transform">arrow_forward</span>
+                    </a>
+                    <a className="text-neutral hover:text-white font-bold text-base md:text-lg flex items-center gap-2 transition-colors group" href="/">
+                      Source Code <span className="material-symbols-outlined text-[20px] group-hover:translate-x-[3px] transition-transform">arrow_forward</span>
+                    </a>
+                  </div>
+                </div>
+                <div className="flex-1 relative h-64 md:h-auto overflow-hidden bg-[#0d1219]">
+                  <img alt="Festival Manager" className="absolute top-0 w-full h-full object-contain object-right drop-shadow-[0_25px_35px_rgba(0,0,0,0.6)] transition-transform duration-1000 hover:scale-105" style={{ left: '0px', paddingRight: '20px' }} src="/festival.png" />
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        {/* About Section */}
+        <section className="max-w-[1100px] mx-auto px-4 md:px-6 py-section-gap w-full" id="about">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-8 md:mb-12 text-center md:text-left">About Me</h2>
+          <div className="flex flex-col md:flex-row gap-10 md:gap-24 items-center md:items-start w-full">
+            <div className="flex-1 text-center md:text-left w-full">
+              <p className="text-lg md:text-2xl text-neutral font-poppins font-medium leading-relaxed opacity-90 mb-8">
+                I am a dedicated software engineer with a strong passion for building beautiful, responsive, and highly functional digital experiences. My journey in tech started out of curiosity and quickly became a lifelong pursuit of mastering both the frontend aesthetics and backend logic.
+              </p>
+              <p className="text-lg md:text-2xl text-neutral font-poppins font-medium leading-relaxed opacity-90 mb-8">
+                When I&apos;m not coding, you can find me exploring new technologies, experimenting with design systems, or contributing to open-source projects. I believe in writing code that is not only effective but also maintainable and clean.
+              </p>
+              <div className="flex flex-wrap gap-4 mt-12 justify-center md:justify-start">
+                <span className="px-6 py-3 bg-surface border border-outline-variant rounded-full text-white font-bold text-sm tracking-wider shadow-sm">React / Next.js</span>
+                <span className="px-6 py-3 bg-surface border border-outline-variant rounded-full text-white font-bold text-sm tracking-wider shadow-sm">TypeScript</span>
+                <span className="px-6 py-3 bg-surface border border-outline-variant rounded-full text-white font-bold text-sm tracking-wider shadow-sm">Tailwind CSS</span>
+                <span className="px-6 py-3 bg-surface border border-outline-variant rounded-full text-white font-bold text-sm tracking-wider shadow-sm">Node.js</span>
+                <span className="px-6 py-3 bg-surface border border-outline-variant rounded-full text-white font-bold text-sm tracking-wider shadow-sm">Figma</span>
+              </div>
+            </div>
+            <div className="w-[200px] h-[200px] md:w-[300px] md:h-[300px] shrink-0 border-[10px] md:border-[16px] border-white shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500 mx-auto md:mx-0">
+              <img alt="Profile picture" className="w-full h-full object-cover" src="/profile.png" />
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section className="w-full bg-[#070a0f] border-t border-outline-variant" id="contact">
+          <div className="max-w-[1100px] mx-auto px-4 md:px-6 py-section-gap w-full flex flex-col md:flex-row gap-12 md:gap-24">
+            <div className="flex-1">
+              <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6">Let&apos;s talk</h2>
+              <p className="text-lg md:text-xl text-neutral font-poppins opacity-80 mb-12 max-w-md leading-relaxed">
+                Have a project in mind? Looking to partner or work together? Reach out through the form and I&apos;ll get back to you in the next 48 hours.
+              </p>
+              
+              <div className="space-y-10">
+                <div className="flex gap-6 group cursor-pointer">
+                  <div className="w-14 h-14 rounded-full border border-outline-variant/50 bg-surface flex items-center justify-center shrink-0 group-hover:border-primary/50 group-hover:bg-primary/5 transition-all duration-300">
+                    <span className="material-symbols-outlined text-neutral group-hover:text-primary transition-colors">mail</span>
+                  </div>
+                  <div>
+                    <h4 className="text-primary text-xs font-bold tracking-widest uppercase mb-2">EMAIL ME</h4>
+                    <p className="text-white text-xl font-medium mb-1">hello@shibili.dev</p>
+                    <p className="text-neutral text-sm opacity-80">I typically reply within 24 hours.</p>
+                  </div>
+                </div>
+                <div className="flex gap-6">
+                  <div className="w-14 h-14 rounded-full border border-outline-variant/50 bg-surface flex items-center justify-center shrink-0">
+                    <span className="material-symbols-outlined text-neutral">schedule</span>
+                  </div>
+                  <div>
+                    <h4 className="text-primary text-xs font-bold tracking-widest uppercase mb-2">RESPONSE TIME</h4>
+                    <p className="text-white text-xl font-medium mb-1">Within 24 hours</p>
+                    <p className="text-neutral text-sm opacity-80">I usually respond quickly.</p>
+                  </div>
+                </div>
+                <div className="flex gap-6 group cursor-pointer">
+                  <div className="w-14 h-14 rounded-full border border-outline-variant/50 bg-surface flex items-center justify-center shrink-0 group-hover:border-primary/50 group-hover:bg-primary/5 transition-all duration-300">
+                    <span className="material-symbols-outlined text-neutral group-hover:text-primary transition-colors">send</span>
+                  </div>
+                  <div>
+                    <h4 className="text-primary text-xs font-bold tracking-widest uppercase mb-2">LET&apos;S CONNECT</h4>
+                    <p className="text-white text-xl font-medium mb-1 leading-snug">Let&apos;s turn your ideas<br/>into real products.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="flex-1">
+              <ContactPageClient />
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-background text-primary font-label-mono text-label-mono w-full border-t border-outline-variant desktop-zoom">
+        <div className="flex flex-col items-center gap-6 max-w-[1100px] mx-auto px-4 md:px-6 py-12">
+          <div className="flex flex-wrap justify-center gap-8 mb-4">
+            <a className="text-neutral hover:text-primary transition-colors flex items-center gap-1 group" href="/">Twitter <span className="material-symbols-outlined text-[16px] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">north_east</span></a>
+            <a className="text-neutral hover:text-primary transition-colors flex items-center gap-1 group" href="/">LinkedIn <span className="material-symbols-outlined text-[16px] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">north_east</span></a>
+            <a className="text-neutral hover:text-primary transition-colors flex items-center gap-1 group" href="/">Github <span className="material-symbols-outlined text-[16px] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">north_east</span></a>
+            <a className="text-neutral hover:text-primary transition-colors flex items-center gap-1 group" href="/">Youtube <span className="material-symbols-outlined text-[16px] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">north_east</span></a>
+            <a className="text-neutral hover:text-primary transition-colors flex items-center gap-1 group" href="/">Dribbble <span className="material-symbols-outlined text-[16px] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">north_east</span></a>
+          </div>
+          <p className="text-neutral text-center text-sm">
+            Muhammed Shibili N &copy; 2026. Designed &amp; Developed by Muhammed Shibili N
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+}
+'''
+with open('src/app/page.tsx', 'w') as f:
+    f.write(code)
+
+print("Rebuilt page.tsx with desktop zoom preserved via CSS class and all mobile-first improvements included.")

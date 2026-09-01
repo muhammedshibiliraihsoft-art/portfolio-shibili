@@ -1,22 +1,26 @@
-import * as z from 'zod';
+import { z } from 'zod';
 import { rateLimitCheck } from '@/lib/rateLimit';
-import { getEnv } from '@/lib/env';
 import { NextResponse } from 'next/server';
+import { getRaihsuiteConfig, createEnquiry } from '@/lib/raihsuite/enquiries';
 
 export const runtime = 'edge';
 
 const ContactSchema = z.object({
   name: z.string().min(2).max(200),
   email: z.string().email(),
-  message: z.string().min(10).max(5000)
+  mobile: z
+    .string()
+    .length(10, 'Enter a valid 10-digit mobile number')
+    .regex(/^[0-9]+$/, 'Only digits are allowed'),
+  message: z.string().min(10).max(5000),
 });
 
 async function verifyTurnstile(): Promise<boolean> {
+  // TODO: Integrate Cloudflare Turnstile once TURNSTILE_SECRET is configured.
   return true;
 }
 
 export async function POST(req: Request) {
-  const env = getEnv();
   let body: unknown;
 
   try {
@@ -28,8 +32,8 @@ export async function POST(req: Request) {
   const parsed = ContactSchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json(
-      { error: 'Validation failed', issues: parsed.error.issues.map(i => i.message) },
-      { status: 400 }
+      { error: 'Validation failed', issues: parsed.error.issues.map((i) => i.message) },
+      { status: 400 },
     );
   }
 
@@ -44,38 +48,24 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Captcha failed' }, { status: 403 });
   }
 
-  const { name, email, message } = parsed.data;
-  const payload = {
-    tenantId: env.TENANT_ID,
-    name,
-    email,
-    message,
-    meta: {
-      ua: req.headers.get('user-agent'),
-      timestamp: new Date().toISOString()
-    }
-  };
-
-  /*
+  let config;
   try {
-    const upstream = await fetch(`${env.RAISUITE_API_BASE}/enquiry`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${env.RAISUITE_API_KEY}`
-      },
-      body: JSON.stringify(payload)
-    });
-
-    if (!upstream.ok) {
-      return NextResponse.json({ error: 'Upstream error' }, { status: 502 });
-    }
+    config = getRaihsuiteConfig();
   } catch {
-    return NextResponse.json({ error: 'Network error' }, { status: 502 });
+    return NextResponse.json(
+      { error: 'Server configuration error. Please try again later.' },
+      { status: 500 },
+    );
   }
-  */
 
-  console.log('[contact] Received enquiry', payload);
+  const result = await createEnquiry(config, parsed.data);
+
+  if (!result.ok) {
+    return NextResponse.json(
+      { error: 'Unable to send your enquiry right now. Please try again later.' },
+      { status: 502 },
+    );
+  }
 
   return NextResponse.json({ status: 'ok' }, { status: 200 });
 }

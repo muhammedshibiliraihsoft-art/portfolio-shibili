@@ -1,0 +1,301 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Alejandro Múnez - Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#002a77",
+                    "inverse-primary": "#0453d8",
+                    "on-secondary-container": "#a1b3ef",
+                    "secondary-fixed": "#dbe1ff",
+                    "on-tertiary": "#571f00",
+                    "surface-container-high": "#282a32",
+                    "primary-fixed": "#dbe1ff",
+                    "secondary": "#b4c5ff",
+                    "tertiary-fixed": "#ffdbcc",
+                    "background": "#0C1218",
+                    "on-error-container": "#ffdad6",
+                    "primary": "#0453d8", /* Electric Blue approximation */
+                    "tertiary-fixed-dim": "#ffb695",
+                    "surface": "#11131b",
+                    "surface-bright": "#373941",
+                    "tertiary": "#ffb695",
+                    "on-tertiary-fixed-variant": "#7b2f00",
+                    "on-primary-container": "#eff0ff",
+                    "surface-container-highest": "#32343d",
+                    "surface-container-lowest": "#0c0e15",
+                    "on-primary-fixed-variant": "#003ea7",
+                    "inverse-on-surface": "#2e3039",
+                    "tertiary-container": "#ba4a00",
+                    "inverse-surface": "#e1e2ed",
+                    "on-secondary-fixed-variant": "#324479",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "secondary-container": "#324479",
+                    "on-error": "#690005",
+                    "surface-container-low": "#191b23",
+                    "on-tertiary-container": "#ffede6",
+                    "surface-container": "#1d1f27",
+                    "error": "#ffb4ab",
+                    "on-secondary": "#192d61",
+                    "on-background": "#e1e2ed",
+                    "surface-tint": "#b4c5ff",
+                    "on-surface-variant": "#c3c6d7",
+                    "surface-variant": "#32343d",
+                    "on-secondary-fixed": "#00174a",
+                    "outline": "#8d90a0",
+                    "surface-dim": "#11131b",
+                    "error-container": "#93000a",
+                    "on-primary-fixed": "#00174a",
+                    "secondary-fixed-dim": "#b4c5ff",
+                    "on-tertiary-fixed": "#351000",
+                    "outline-variant": "#434654",
+                    "on-surface": "#f5f5f5", /* Off-white approximation */
+                    "primary-container": "#2864e8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "content-gap": "64px",
+                    "container-padding": "24px",
+                    "gutter": "32px",
+                    "section-gap": "160px",
+                    "max-width": "1200px"
+            },
+            "fontFamily": {
+                    "headline-md": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "label-mono": [
+                            "JetBrains Mono"
+                    ],
+                    "display-xl": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "display-lg": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body-lg": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "display-lg-mobile": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body-md": [
+                            "Plus Jakarta Sans"
+                    ]
+            },
+            "fontSize": {
+                    "headline-md": [
+                            "48px",
+                            {
+                                    "lineHeight": "52px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-mono": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "display-xl": [
+                            "110px",
+                            {
+                                    "lineHeight": "100px",
+                                    "letterSpacing": "-0.04em",
+                                    "fontWeight": "800"
+                            }
+                    ],
+                    "display-lg": [
+                            "80px",
+                            {
+                                    "lineHeight": "76px",
+                                    "letterSpacing": "-0.04em",
+                                    "fontWeight": "800"
+                            }
+                    ],
+                    "body-lg": [
+                            "20px",
+                            {
+                                    "lineHeight": "32px",
+                                    "letterSpacing": "0em",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display-lg-mobile": [
+                            "56px",
+                            {
+                                    "lineHeight": "54px",
+                                    "letterSpacing": "-0.03em",
+                                    "fontWeight": "800"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "26px",
+                                    "letterSpacing": "0em",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-surface-variant');
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white flex flex-col min-h-screen bg-background">
+<!-- TopNavBar -->
+<nav class="bg-transparent backdrop-blur-xl text-primary font-body-md text-body-md fixed top-0 w-full z-50 transition-all duration-300">
+<div class="flex justify-between items-center max-w-max-width mx-auto px-container-padding h-20">
+<div class="flex items-center gap-4">
+<img alt="Developer Profile Avatar" class="w-10 h-10 rounded-full border border-outline-variant object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxiu9P6aDZxw3KtL3uu6_E2VtG5_phT8gpt9CqhObwoNRxggpkOeTsBRa3PYeHA96NCZ91lsrsGAKn--gl2qcXWZdTjfB-Hlv6Pkz4deFF7WSq8LMDO0UQ35f82U43xYbkXKos6-rn-VhxCSgZQlpv1jzM_snHCAmuD5uM-e5wGcdElqp7HtRXwwABSoPGAInijZbijNa8i7uhc1dHEFOEq5kVgSD2PSq7L4D7wIYeDFCnPulxrUxP5g">
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-all duration-300" href="#experience">Experience</a>
+<a class="text-on-surface-variant hover:text-primary transition-all duration-300" href="#projects">Projects</a>
+<a class="text-primary font-bold relative after:content-[''] after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-1.5 after:h-1.5 after:bg-primary after:rounded-full hover:text-primary transition-all duration-300" href="#about">About</a>
+</div>
+</div>
+</nav>
+<main class="flex-grow pt-32">
+<!-- Hero Section -->
+<section class="mx-auto px-container-padding py-section-gap flex flex-col w-full items-start max-w-[800px]">
+<div class="w-full text-left max-w-[800px]" style="position: relative;">
+<h1 class="text-[40px] md:text-[64px] font-display-lg-mobile md:font-display-lg text-on-surface whitespace-nowrap mb-1" style="opacity: 1;">Muhammed Shibili N</h1>
+<h2 class="text-primary text-headline-md font-headline-md mb-4" style="font-size: 35px;">AI Architect &amp; Full Stack Developer</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-6">
+                Developer based in San Francisco, USA. I specialize in UI design, web and mobile application development and maintenance.
+            </p>
+<a class="inline-block bg-primary text-white px-8 py-4 rounded-full font-bold hover:scale-105 hover:brightness-110 transition-all duration-300" href="#">Get in Touch</a>
+</div>
+</section>
+<!-- Experience Section -->
+<section class="max-w-[800px] mx-auto px-container-padding py-section-gap" id="experience">
+<h2 class="text-headline-md font-headline-md text-on-surface mb-16">Work Experience</h2>
+<div class="flex flex-col gap-12">
+<!-- Zalmart -->
+<div>
+<h3 class="text-body-lg font-bold text-on-surface mb-1">Zalmart</h3>
+<h4 class="text-primary text-body-md font-bold mb-1">Lead Android Developer</h4>
+<p class="text-on-surface-variant text-sm mb-6">May 2018 — Sept 2020</p>
+<ul class="space-y-4">
+<li class="flex gap-4 items-start">
+<span class="material-symbols-outlined text-outline text-[20px] mt-1 shrink-0">check_circle</span>
+<p class="text-body-md font-body-md text-on-surface-variant">Implemented advanced memory management and code optimization techniques, resulting in a reduction in application load time by 40% and a decrease in crashes by 25%. This significantly improved user experience and increased user retention by 20%.</p>
+</li>
+<li class="flex gap-4 items-start">
+<span class="material-symbols-outlined text-outline text-[20px] mt-1 shrink-0">check_circle</span>
+<p class="text-body-md font-body-md text-on-surface-variant">I led a team of developers in building and integrating new features using Jetpack Android components such as LiveData and ViewModel. This enabled us to build scalable and maintainable applications, reducing the crash rate by 20% and speeding up the time to delivery of new features by 15%.</p>
+</li>
+<li class="flex gap-4 items-start">
+<span class="material-symbols-outlined text-outline text-[20px] mt-1 shrink-0">check_circle</span>
+<p class="text-body-md font-body-md text-on-surface-variant">Integrated Google Pay for in-app purchases, resulting in a 35% increase in mobile transaction revenue. Additionally, implemented Firebase Analytics to gain insights into user behavior, enabling data-driven optimizations and a 30% increase in user retention.</p>
+</li>
+</ul>
+</div>
+<!-- Bankit -->
+<div>
+<h3 class="text-body-lg font-bold text-on-surface mb-1">Bankit</h3>
+<h4 class="text-primary text-body-md font-bold mb-1">Mobile Developer</h4>
+<p class="text-on-surface-variant text-sm mb-6">Feb 2017 — May 2018</p>
+<ul class="space-y-4">
+<li class="flex gap-4 items-start">
+<span class="material-symbols-outlined text-outline text-[20px] mt-1 shrink-0">check_circle</span>
+<p class="text-body-md font-body-md text-on-surface-variant">I designed and developed a mobile application using Flutter, allowing it to be deployed on both Android and iOS with a single codebase. This reduced development time by 50% and maintenance costs by 30%, facilitating a consistent user experience on both platforms.</p>
+</li>
+<li class="flex gap-4 items-start">
+<span class="material-symbols-outlined text-outline text-[20px] mt-1 shrink-0">check_circle</span>
+<p class="text-body-md font-body-md text-on-surface-variant">I integrated biometric authentication and data encryption, significantly improving the security of user data. This implementation resulted in a 40% increase in user trust and a 25% reduction in unauthorized access attempts.</p>
+</li>
+</ul>
+</div>
+<!-- Driveer -->
+<div>
+<h3 class="text-body-lg font-bold text-on-surface mb-1">Driveer</h3>
+<h4 class="text-primary text-body-md font-bold mb-1">Frontend Developer</h4>
+<p class="text-on-surface-variant text-sm mb-6">Jun 2015 — Oct 2016</p>
+<p class="text-body-md font-body-md text-on-surface-variant">Developed and integrated a real-time vehicle tracking system using WebSockets, improving accuracy and data update in the application. This functionality increased user satisfaction by 30% and reduced customer service inquiries by 25%.</p>
+</div>
+</div>
+</section>
+<!-- Projects Section -->
+<section class="max-w-max-width mx-auto px-container-padding py-section-gap" id="projects">
+<h2 class="text-headline-md font-headline-md text-on-surface mb-16 text-center md:text-left">Featured Projects</h2>
+<div class="bg-surface-container-high rounded-[2rem] overflow-hidden flex flex-col md:flex-row items-center border border-surface-variant relative shadow-lg">
+<!-- Subtle noise overlay -->
+<div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E&quot;);"></div>
+<div class="p-12 md:w-1/2 relative z-10">
+<h3 class="text-headline-md font-headline-md text-primary mb-4">Spotifu Music</h3>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-8 max-w-md">
+                        A music streaming app that emulates Spotify's core features.
+                    </p>
+<div class="flex gap-6">
+<a class="flex items-center gap-2 text-on-surface hover:text-primary transition-colors text-body-md font-bold" href="#">
+                            Source <span class="material-symbols-outlined text-[20px]">north_east</span>
+</a>
+<a class="flex items-center gap-2 text-on-surface hover:text-primary transition-colors text-body-md font-bold" href="#">
+                            Preview <span class="material-symbols-outlined text-[20px]">north_east</span>
+</a>
+</div>
+</div>
+<div class="md:w-1/2 p-8 pt-0 md:pt-8 md:pl-0 relative z-10 flex justify-end">
+<img class="rounded-xl shadow-2xl object-cover h-[400px] w-full max-w-[500px]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjqKLHdVjtpXWZVZs_3AzwzJ8MiK2-Wr3XzbtazwXheb4PH4EdqsxYU0IjJCWOd9IsHeqjyEvgFCxU1cmLhClFJ5kp7-yQ0waUyH3TLkssZdvenrs-APfORnwj0p0t2nJA3aAdVHnaN5T5oX7APHDNFvv-x8usryy7ZzeNVzxsxO-_mIDTtt47ltgzP3COllsW_RFX9BEt_e0Hdwdzm9nFhjfMmOUodapDZPFfmM2mJYUUgotWkNe_VJY0MQCnfJhK2FM" style="object-position: left top;">
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="max-w-max-width mx-auto px-container-padding py-section-gap" id="about">
+<h2 class="text-headline-md font-headline-md text-on-surface mb-16">About Metionile text left algine mathi&nbsp;</h2>
+<div class="flex flex-col md:flex-row gap-16 items-start">
+<div class="md:w-1/2">
+<p class="text-body-lg font-body-lg text-on-surface-variant leading-relaxed">
+                        Hi, I'm Alejandro Múnez, a passionate Mobile and Web Developer with a knack for crafting seamless digital experiences. With a strong background in both Android and iOS development, as well as front-end web technologies, I thrive in the intersection where creativity meets technology. Over the years, I've honed my skills in building robust, user-friendly applications that not only meet the needs of users but also push the boundaries of what's possible. My projects range from innovative mobile applications to responsive web designs, all with a focus on performance, security, and scalability.
+                    </p>
+</div>
+<div class="md:w-1/2 flex justify-center md:justify-end w-full">
+<!-- Polaroid Frame -->
+<div class="bg-[#f0f4f8] p-4 pb-12 shadow-xl transform rotate-[6deg] max-w-[400px] w-full transition-transform hover:rotate-0 duration-500">
+<img class="w-full aspect-[4/5] object-cover filter grayscale hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA28T0Y__etTY7nddq2mX4sGBFwDM1YN3Kn0ZTRI8blN4jK2hWLCr9f0_gLy8y_o9d6BA37zdYGYNMokgj9jLn_q1DJdmtp-aHZl1sXKh-uO1_lq8RKp5eHjWbrbIXbyAOSwUope2dRLfodzeBFFB32prt9PJUdeLhBHQoFflWlvqv1CMbOcVDEu4FMzkWEdYf7CBSXyDNKr5Y9wpBgWz8iqoXL8GakRzg5ldj2hMb4y0xySFWD11RRqlo5_M4g1tAhkTA">
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-background text-primary font-label-mono text-label-mono w-full py-12 border-t border-outline-variant flex flex-col items-center gap-6 max-w-max-width mx-auto px-container-padding">
+<div class="flex flex-wrap justify-center gap-8 mb-4">
+<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1 group" href="#">Twitter <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">north_east</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1 group" href="#">LinkedIn <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">north_east</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1 group" href="#">Github <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">north_east</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1 group" href="#">Youtube <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">north_east</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1 group" href="#">Dribbble <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">north_east</span></a>
+</div>
+<p class="text-on-surface-variant text-center text-sm">
+            Alejandro Múnez Cuntez © 2026. <span class="opacity-70">Designed &amp; Developed by Moisés Machuca</span>
+</p>
+</footer>
+
+
+</body></html>
