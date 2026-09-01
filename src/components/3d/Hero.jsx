@@ -68,7 +68,7 @@ const Hero = () => {
 
         {/* RIGHT: 3D Model or Visual */}
         <figure>
-          <div className="hero-3d-layout hidden md:block">
+          <div className="hero-3d-layout">
             <HeroExperience />
           </div>
         </figure>

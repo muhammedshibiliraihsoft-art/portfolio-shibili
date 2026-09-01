@@ -280,15 +280,15 @@ export default function PortfolioTemplate() {
 
       </main>
 
-      <footer className="bg-black text-primary font-label-mono text-label-mono w-full border-t border-outline-variant ">
-        <div className="flex flex-col items-start md:items-center gap-6 max-w-[1100px] mx-auto px-4 md:px-6 py-12 w-full">
-          <div className="flex flex-wrap justify-start md:justify-center gap-8 mb-4">
+      <footer className="bg-black text-primary font-label-mono w-full border-t border-outline-variant ">
+        <div className="flex flex-col items-center gap-6 max-w-[1100px] mx-auto px-4 md:px-6 py-12 w-full text-xs md:text-sm">
+          <div className="flex flex-wrap justify-center gap-8 mb-4">
             <a className="text-neutral hover:text-primary transition-colors flex items-center gap-1 group" href="https://github.com/shibilikds">Github <span className="material-symbols-outlined text-[16px] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">north_east</span></a>
             <a className="text-neutral hover:text-primary transition-colors flex items-center gap-1 group" href="https://www.instagram.com/shib_ili_y/">Instagram <span className="material-symbols-outlined text-[16px] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">north_east</span></a>
             <a className="text-neutral hover:text-primary transition-colors flex items-center gap-1 group" href="https://www.facebook.com/profile.php?id=100082191128704">Facebook <span className="material-symbols-outlined text-[16px] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">north_east</span></a>
             <a className="text-[#a78bfa] hover:text-primary transition-colors flex items-center gap-1 group" href="https://www.raihsoft.com">RaihSoft <span className="material-symbols-outlined text-[16px] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">north_east</span></a>
           </div>
-          <p className="text-neutral text-left md:text-center text-sm">
+          <p className="text-neutral text-center text-xs md:text-sm">
             Muhammed Shibili N &copy; 2026. Designed &amp; Developed by Muhammed Shibili N
           </p>
         </div>
