@@ -64,7 +64,7 @@ export async function createEnquiry(
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ ...data, tenant: config.tenantId }),
+      body: JSON.stringify({ ...data, tenant: parseInt(config.tenantId, 10) }),
     });
 
     const body = await upstream.json().catch(() => null);
