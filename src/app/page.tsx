@@ -142,7 +142,7 @@ export default function PortfolioTemplate() {
                 <div className="flex-1 p-8 md:p-16 flex flex-col justify-center z-10 relative">
                   <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6">AccoutSoft</h3>
                   <p className="text-base md:text-xl text-neutral opacity-80 mb-8 md:mb-10 font-poppins max-w-lg leading-relaxed">A comprehensive financial tracking application enabling businesses to monitor real-time accounting data, streamline billing, and visualize metrics through dynamic dashboards.</p>
-                  <div className="flex gap-4 md:gap-6 mt-auto flex-wrap">
+                  <div className="hidden gap-4 md:gap-6 mt-auto flex-wrap">
                     <a className="text-white hover:text-primary font-bold text-base md:text-lg flex items-center gap-2 transition-colors group" href="/">
                       Live Preview <span className="material-symbols-outlined text-[20px] group-hover:translate-x-[3px] transition-transform">arrow_forward</span>
                     </a>
@@ -164,7 +164,7 @@ export default function PortfolioTemplate() {
                 <div className="flex-1 p-8 md:p-16 flex flex-col justify-center z-10 relative">
                   <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6">Contribution Portal</h3>
                   <p className="text-base md:text-xl text-neutral opacity-80 mb-8 md:mb-10 font-poppins max-w-lg leading-relaxed">A secure and transparent platform for managing charity donations and member contributions. Features robust reporting tools and automated receipt generation.</p>
-                  <div className="flex gap-4 md:gap-6 mt-auto flex-wrap">
+                  <div className="hidden gap-4 md:gap-6 mt-auto flex-wrap">
                     <a className="text-white hover:text-primary font-bold text-base md:text-lg flex items-center gap-2 transition-colors group" href="/">
                       Live Preview <span className="material-symbols-outlined text-[20px] group-hover:translate-x-[3px] transition-transform">arrow_forward</span>
                     </a>
