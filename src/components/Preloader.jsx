@@ -3,6 +3,48 @@ import React, { useEffect, useState } from "react";
 import { useProgress } from "@react-three/drei";
 import gsap from "gsap";
 
+function ConcentricRing({ className = "", ...props }) {
+  return (
+    <>
+      <style>{`
+        @keyframes loading-ui-concentric-ring-rotation {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      `}</style>
+      <span
+        role="status"
+        className={`relative inline-block ${className}`}
+        style={{
+          animation:
+            "loading-ui-concentric-ring-rotation var(--duration, 1s) linear infinite",
+        }}
+        {...props}
+      >
+        <span
+          aria-hidden="true"
+          className="absolute inset-0 rounded-full border-2 border-current"
+          style={{ opacity: 0.25 }}
+        />
+        <span
+          aria-hidden="true"
+          className="absolute top-1/2 left-1/2 rounded-full border-2 border-transparent border-b-current"
+          style={{
+            width: "83.333%",
+            height: "83.333%",
+            transform: "translate(-50%, -50%)",
+          }}
+        />
+        <span className="sr-only">Loading</span>
+      </span>
+    </>
+  );
+}
+
 export default function Preloader() {
   const { progress } = useProgress();
   const [loading, setLoading] = useState(true);
@@ -49,7 +91,7 @@ export default function Preloader() {
 
   useEffect(() => {
     // Wait until both 3D models and DOM images are fully loaded
-    if (progress >= 100 && imagesLoaded) {
+    if (mounted && progress >= 100 && imagesLoaded) {
       setTimeout(() => {
         gsap.to(".preloader-overlay", {
           yPercent: -100,
@@ -59,24 +101,26 @@ export default function Preloader() {
         });
       }, 1000); // 1s buffer for rendering
     }
-  }, [progress, imagesLoaded]);
+  }, [progress, imagesLoaded, mounted]);
 
-  if (!mounted || !loading) return null;
+  // If loading is finished, unmount completely
+  if (!loading) return null;
 
-  // Calculate overall percentage (50% from 3D, 50% from images - but we'll just show 3D progress for now as it's the heaviest, or fake a 99% until images load)
-  const displayProgress = (!imagesLoaded && progress >= 100) ? 99 : Math.round(progress);
+  // Show 0% during SSR to avoid hydration mismatch, then show actual progress
+  const displayProgress = !mounted ? 0 : (!imagesLoaded && progress >= 100) ? 99 : Math.round(progress);
 
+  // We return the overlay even when !mounted so it renders on the server and covers the screen instantly!
   return (
     <div className="preloader-overlay fixed inset-0 z-[99999] bg-[#050505] flex flex-col items-center justify-center">
       <div className="flex flex-col items-center justify-center gap-6">
-        <div className="w-16 h-16 border-4 border-white-50/20 border-t-primary rounded-full animate-spin"></div>
+        <ConcentricRing className="w-16 h-16 text-primary" style={{ "--duration": "1.5s" }} />
         
-        <div className="text-white text-3xl md:text-5xl font-extrabold font-serif tracking-widest">
+        <div suppressHydrationWarning className="text-white text-3xl md:text-5xl font-extrabold font-serif tracking-widest tabular-nums">
           {displayProgress}%
         </div>
         
-        <p className="text-neutral text-sm uppercase tracking-widest opacity-60 font-poppins mt-2">
-          {imagesLoaded && progress >= 100 ? "Ready!" : "Preloading Assets..."}
+        <p suppressHydrationWarning className="text-neutral text-sm uppercase tracking-widest opacity-60 font-poppins mt-2">
+          {(!mounted) ? "Preloading Assets..." : (imagesLoaded && progress >= 100 ? "Ready!" : "Preloading Assets...")}
         </p>
       </div>
     </div>
