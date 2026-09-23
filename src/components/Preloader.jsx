@@ -3,45 +3,30 @@ import React, { useEffect, useState } from "react";
 import { useProgress } from "@react-three/drei";
 import gsap from "gsap";
 
-function ConcentricRing({ className = "", ...props }) {
+function ConcentricRing({ className = "", duration = "1.5s", ...props }) {
   return (
-    <>
-      <style>{`
-        @keyframes loading-ui-concentric-ring-rotation {
-          0% {
-            transform: rotate(0deg);
-          }
-          100% {
-            transform: rotate(360deg);
-          }
-        }
-      `}</style>
+    <span
+      role="status"
+      className={`relative inline-block animate-spin ${className}`}
+      style={{ animationDuration: duration }}
+      {...props}
+    >
       <span
-        role="status"
-        className={`relative inline-block ${className}`}
+        aria-hidden="true"
+        className="absolute inset-0 rounded-full border-2 border-current"
+        style={{ opacity: 0.25 }}
+      />
+      <span
+        aria-hidden="true"
+        className="absolute top-1/2 left-1/2 rounded-full border-2 border-transparent border-b-current"
         style={{
-          animation:
-            "loading-ui-concentric-ring-rotation var(--duration, 1s) linear infinite",
+          width: "83.333%",
+          height: "83.333%",
+          transform: "translate(-50%, -50%)",
         }}
-        {...props}
-      >
-        <span
-          aria-hidden="true"
-          className="absolute inset-0 rounded-full border-2 border-current"
-          style={{ opacity: 0.25 }}
-        />
-        <span
-          aria-hidden="true"
-          className="absolute top-1/2 left-1/2 rounded-full border-2 border-transparent border-b-current"
-          style={{
-            width: "83.333%",
-            height: "83.333%",
-            transform: "translate(-50%, -50%)",
-          }}
-        />
-        <span className="sr-only">Loading</span>
-      </span>
-    </>
+      />
+      <span className="sr-only">Loading</span>
+    </span>
   );
 }
 
@@ -113,7 +98,7 @@ export default function Preloader() {
   return (
     <div className="preloader-overlay fixed inset-0 z-[99999] bg-[#050505] flex flex-col items-center justify-center">
       <div className="flex flex-col items-center justify-center gap-6">
-        <ConcentricRing className="w-16 h-16 text-primary" style={{ "--duration": "1.5s" }} />
+        <ConcentricRing className="w-16 h-16 text-primary" duration="1.5s" />
         
         <div suppressHydrationWarning className="text-white text-3xl md:text-5xl font-extrabold font-serif tracking-widest tabular-nums">
           {displayProgress}%
