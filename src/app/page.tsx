@@ -142,14 +142,7 @@ export default function PortfolioTemplate() {
                 <div className="flex-1 p-8 md:p-16 flex flex-col justify-center z-10 relative">
                   <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6">AccoutSoft</h3>
                   <p className="text-base md:text-xl text-neutral opacity-80 mb-8 md:mb-10 font-poppins max-w-lg leading-relaxed">A comprehensive financial tracking application enabling businesses to monitor real-time accounting data, streamline billing, and visualize metrics through dynamic dashboards.</p>
-                  <div className="hidden gap-4 md:gap-6 mt-auto flex-wrap">
-                    <a className="text-white hover:text-primary font-bold text-base md:text-lg flex items-center gap-2 transition-colors group" href="/">
-                      Live Preview <span className="material-symbols-outlined text-[20px] group-hover:translate-x-[3px] transition-transform">arrow_forward</span>
-                    </a>
-                    <a className="text-neutral hover:text-white font-bold text-base md:text-lg flex items-center gap-2 transition-colors group" href="/">
-                      Source Code <span className="material-symbols-outlined text-[20px] group-hover:translate-x-[3px] transition-transform">arrow_forward</span>
-                    </a>
-                  </div>
+                  {/* Links removed as requested */}
                 </div>
                 <div className="flex-1 relative h-64 md:h-auto overflow-hidden bg-[#0a0e14]">
                   <img alt="AccoutSoft" className="absolute top-0 left-0 w-full h-full object-cover object-right-top transition-transform duration-1000 hover:scale-105" src="/AccoutSoft-light.webp" />
@@ -164,14 +157,7 @@ export default function PortfolioTemplate() {
                 <div className="flex-1 p-8 md:p-16 flex flex-col justify-center z-10 relative">
                   <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6">Contribution Portal</h3>
                   <p className="text-base md:text-xl text-neutral opacity-80 mb-8 md:mb-10 font-poppins max-w-lg leading-relaxed">A secure and transparent platform for managing charity donations and member contributions. Features robust reporting tools and automated receipt generation.</p>
-                  <div className="hidden gap-4 md:gap-6 mt-auto flex-wrap">
-                    <a className="text-white hover:text-primary font-bold text-base md:text-lg flex items-center gap-2 transition-colors group" href="/">
-                      Live Preview <span className="material-symbols-outlined text-[20px] group-hover:translate-x-[3px] transition-transform">arrow_forward</span>
-                    </a>
-                    <a className="text-neutral hover:text-white font-bold text-base md:text-lg flex items-center gap-2 transition-colors group" href="/">
-                      Source Code <span className="material-symbols-outlined text-[20px] group-hover:translate-x-[3px] transition-transform">arrow_forward</span>
-                    </a>
-                  </div>
+                  {/* Links removed as requested */}
                 </div>
                 <div className="flex-1 relative h-64 md:h-auto overflow-hidden bg-[#040811]">
                   <img alt="Contribution Portal" className="absolute top-0 left-0 w-full h-full object-contain object-bottom drop-shadow-2xl transition-transform duration-1000 hover:scale-105" src="/charity.webp" />
@@ -186,14 +172,7 @@ export default function PortfolioTemplate() {
                 <div className="flex-1 p-8 md:p-16 flex flex-col justify-center z-10 relative">
                   <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6">Festival Manager</h3>
                   <p className="text-base md:text-xl text-neutral opacity-80 mb-8 md:mb-10 font-poppins max-w-lg leading-relaxed">An end-to-end event management suite tailored for large-scale festivals, handling ticketing workflows, artist schedules, and real-time venue coordination seamlessly.</p>
-                  <div className="hidden gap-4 md:gap-6 mt-auto flex-wrap">
-                    <a className="text-white hover:text-primary font-bold text-base md:text-lg flex items-center gap-2 transition-colors group" href="/">
-                      Live Preview <span className="material-symbols-outlined text-[20px] group-hover:translate-x-[3px] transition-transform">arrow_forward</span>
-                    </a>
-                    <a className="text-neutral hover:text-white font-bold text-base md:text-lg flex items-center gap-2 transition-colors group" href="/">
-                      Source Code <span className="material-symbols-outlined text-[20px] group-hover:translate-x-[3px] transition-transform">arrow_forward</span>
-                    </a>
-                  </div>
+                  {/* Links removed as requested */}
                 </div>
                 <div className="flex-1 relative h-64 md:h-auto overflow-hidden bg-[#0d1219]">
                   <img alt="Festival Manager" className="absolute top-0 w-full h-full object-contain object-right drop-shadow-[0_25px_35px_rgba(0,0,0,0.6)] transition-transform duration-1000 hover:scale-105" style={{ left: '0px', paddingRight: '20px' }} src="/festival.webp" />
